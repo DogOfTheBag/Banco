@@ -62,7 +62,7 @@ public class Banco {
     /*Las siguientes funciones se encargan de cargar y guardar respectivamente
     la información de los listados en archivos.txt, de forma que tenemos persistencia de informacion al cerrar la app
     a la vez que mantenemos una distincion entre cada tipo de producto*/
-    public void cargarProductosDeArchivo(String ruta) throws FileNotFoundException{
+    public void cargarPrestamistasDeArchivo(String ruta) throws FileNotFoundException, Exception{
         File archivo = new File(ruta);
         if(!archivo.exists()) return;
         
@@ -82,7 +82,7 @@ public class Banco {
         }
     }
     
-    public void guardarProductosEnArchivo(String ruta){
+    public void guardarPrestamistasEnArchivo(String ruta){
         System.out.println("ENTRANDO A GUARDAR PRESTRAMISTAS");
         System.out.println("PRODUCTOS A GUARDAR: " + prestamistas.size());
         

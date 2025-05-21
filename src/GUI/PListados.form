@@ -114,12 +114,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonListadoNormalActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botonListadoConsolas">
+        <Component class="javax.swing.JButton" name="botonSimulacionPrestamo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Simulador de prestamo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonListadoConsolasActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSimulacionPrestamoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonVolver">

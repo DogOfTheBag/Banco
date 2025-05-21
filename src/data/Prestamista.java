@@ -9,18 +9,21 @@ public class Prestamista {
     private int numPlazos;
     private double porcentajeInteres;
 
-    public Prestamista(String nombre, int numPlazos, double porcentajeInteres) {
-        this.nombre = nombre;
-        this.numPlazos = numPlazos;
-        this.porcentajeInteres = porcentajeInteres;
+    public Prestamista(String nombre, int numPlazos, double porcentajeInteres) throws Exception {
+        this.setNombre(nombre);
+        this.setNumPlazos(numPlazos);
+        this.setPorcentajeInteres(porcentajeInteres);
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws Exception {
+        if(nombre != null || nombre.trim().isEmpty())
+            this.nombre = nombre;
+        else
+            throw new Exception("El nombre no puede estar vacio");
     }
 
     public int getNumPlazos() {
@@ -34,32 +37,30 @@ public class Prestamista {
             return false;
     }
 
-    public boolean setNumPlazos(int numPlazos) throws Exception {
-        if(numPlazos >= 4 && numPlazos <= 48){
+    public void setNumPlazos(int numPlazos) throws Exception {
+        if(numPlazos >= 4 && numPlazos <= 120){
             this.numPlazos = numPlazos;
-            return true;
-        }
-        return false;
+        }else
+            throw new Exception("El numero de meses de plazo debe estar entre 4 y 120");
     }
 
     public double getPorcentajeInteres() {
         return porcentajeInteres;
     }
 
-    public boolean setPorcentajeInteres(double porcentajeInteres) throws Exception {
+    public void setPorcentajeInteres(double porcentajeInteres) throws Exception {
         if(porcentajeInteres >= 0 && porcentajeInteres <= 100){
             this.porcentajeInteres = porcentajeInteres;
-            return true;
         }
         else
             throw new Exception("Las tasas de intereses deben estar entre el 0 y el 100");
     }
  
     private static boolean numPlazosEsValido(int numPlazos) throws Exception {
-        if(numPlazos >= 4 && numPlazos <= 48){
+        if(numPlazos >= 4 && numPlazos <= 120){
             return true;
         }else
-            throw new Exception("El numero de meses de plazo debe estar entre 4 y 48");
+            throw new Exception("El numero de meses de plazo debe estar entre 4 y 120");
     }
 
     private static boolean porcentajeInteresEsValido(double porcentajeInteres) throws Exception {
@@ -72,7 +73,7 @@ public class Prestamista {
 
     @Override
     public String toString() {
-        return nombre + " | Numero de plazos: " + numPlazos + " | Porcentaje de interes: " + porcentajeInteres;
+        return nombre + " | Numero de meses de plazo: " + numPlazos + " | Porcentaje de interes: " + porcentajeInteres + "%";
     }
 
 }

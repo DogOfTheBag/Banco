@@ -91,7 +91,7 @@ public class PPal extends javax.swing.JPanel {
         for (Prestamista p : banco.getPrestamistas()) {
             System.out.println("Va a guardarse: " + p);
         }
-        banco.guardarProductosEnArchivo("res/prestamistas.txt");
+        banco.guardarPrestamistasEnArchivo("res/prestamistas.txt");
         JOptionPane.showMessageDialog(null, "Guardando datos en el archivo. Hasta la proxima!");
         v.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed

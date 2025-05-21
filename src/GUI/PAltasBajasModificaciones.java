@@ -109,7 +109,7 @@ public class PAltasBajasModificaciones extends javax.swing.JPanel {
         
         try{
                 String nombre = JOptionPane.showInputDialog("Introduce el nombre del prestamista");
-                if (nombre == null) return; //si algun valor es null es que le ha dado a cancelar y se corta la alta
+                if (nombre == null || nombre.trim().isEmpty()) return; //si algun valor es null es que le ha dado a cancelar y se corta la alta
                 String stringPorcentaje = JOptionPane.showInputDialog("Introduce el porcentaje de interes (25.4 por ejemplo)");
                 if (stringPorcentaje == null) return;
                 String stringNumPlazos = JOptionPane.showInputDialog("Introduce el plazo de meses del prestamo (34 por ejemplo)");
@@ -161,8 +161,6 @@ public class PAltasBajasModificaciones extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No se puede modificar nada, no hay productos en la tienda");
         else{
             try{
-            //el modificar es un modificar sencillo de precio y stock, dado que normalmente los productos de la tienda no cambian de nombre y género
-            //se podria ampliar, hacer modify más especificos, o añadir más para dar más libertad
             String nombre = JOptionPane.showInputDialog(banco.toString() + "\nIntroduce el nombre del prestamista a modificar"); 
             if (nombre == null) return;
             String stringPorcentaje = JOptionPane.showInputDialog("Introduce el nuevo porcentaje de interes"); 

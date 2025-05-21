@@ -33,7 +33,7 @@ public class VPal extends javax.swing.JFrame {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e){
-                tienda.guardarProductosEnArchivo("res/prestamistas.txt");
+                tienda.guardarPrestamistasEnArchivo("res/prestamistas.txt");
                 JOptionPane.showMessageDialog(null, "Datos guardados. Hasta la próxima!");
                 dispose();
             }

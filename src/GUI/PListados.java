@@ -43,7 +43,7 @@ public class PListados extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         botonListadoNormal = new javax.swing.JButton();
-        botonListadoConsolas = new javax.swing.JButton();
+        botonSimulacionPrestamo = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -115,13 +115,13 @@ public class PListados extends javax.swing.JPanel {
         });
         panelInferior.add(botonListadoNormal);
 
-        botonListadoConsolas.setText("Simulador de prestamo");
-        botonListadoConsolas.addActionListener(new java.awt.event.ActionListener() {
+        botonSimulacionPrestamo.setText("Simulador de prestamo");
+        botonSimulacionPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonListadoConsolasActionPerformed(evt);
+                botonSimulacionPrestamoActionPerformed(evt);
             }
         });
-        panelInferior.add(botonListadoConsolas);
+        panelInferior.add(botonSimulacionPrestamo);
 
         botonVolver.setText("Volver");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -145,20 +145,22 @@ public class PListados extends javax.swing.JPanel {
         this.areaListado.setText(banco.toString());
     }//GEN-LAST:event_botonListadoNormalActionPerformed
 
-    private void botonListadoConsolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListadoConsolasActionPerformed
+    private void botonSimulacionPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSimulacionPrestamoActionPerformed
         try {
             this.areaListado.setText(listarPrestamistasConDinero("Estos son los prestamos que te podemos ofrecer \n"));
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Por favor, introduce un numero");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"No se hacen prestamos por menos de 1000 euros y mas de 300000");
             Logger.getLogger(PListados.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_botonListadoConsolasActionPerformed
+    }//GEN-LAST:event_botonSimulacionPrestamoActionPerformed
     
     private String listarPrestamistasConDinero(String titulo) throws Exception{
         String stringDinero = JOptionPane.showInputDialog(null, "Introduce la cantidad de dinero que deseas pedir");
         if(stringDinero == null)
             throw new Exception("Necesitamos una cantidad de dinero para simular el prestamo");
-        int dinero = Integer.parseInt(stringDinero);
+        double dinero = Double.parseDouble(stringDinero);
         if(dinero < 1000 || dinero > 300000){
             throw new Exception("No se pueden pedir creditos de menos de 1000 euros o de mas de 300000 euros");
         }
@@ -167,7 +169,8 @@ public class PListados extends javax.swing.JPanel {
             double pagoConInteres = dinero * (1 +(p.getPorcentajeInteres() / 100));
             double pagoPlazo = pagoConInteres / p.getNumPlazos();
             resultado.append(p.toString())
-                .append(String.format(" | Total a pagar del préstamo con intereses: %.2f", pagoConInteres))
+                .append(String.format(" | Dinero pedido: %.2f", dinero))
+                .append(String.format("€ | Total a pagar del préstamo con intereses: %.2f", pagoConInteres))
                 .append(String.format("€ | Dinero a pagar en un plazo: %.2f", pagoPlazo))
                 .append(" €\n");
         }
@@ -176,8 +179,8 @@ public class PListados extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaListado;
-    private javax.swing.JButton botonListadoConsolas;
     private javax.swing.JButton botonListadoNormal;
+    private javax.swing.JButton botonSimulacionPrestamo;
     private javax.swing.JButton botonVolver;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

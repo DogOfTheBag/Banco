@@ -14,6 +14,9 @@ public class App extends Thread {
 
     /**
      * @param args the command line arguments
+     ***********************************************NOTA PARA JAVI**************************************************
+     * SI VES ESTE EJERCICIO PRIMERO MIRATE MEJOR LA TIENDA PARA EMPEZAR QUE AHI EXPLICO ALGO MÁS EL PROGRAMA
+     ***********************************************NOTA PARA JAVI**************************************************
      */
     final boolean DEV_VERSION = false;
     final String NOM = "Banco Damtander";
@@ -36,7 +39,7 @@ public class App extends Thread {
         banco = new Banco();
            
             try {
-                banco.cargarProductosDeArchivo("res/prestamistas.txt");
+                banco.cargarPrestamistasDeArchivo("res/prestamistas.txt");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -51,7 +54,7 @@ public class App extends Thread {
     }
 //***********************************PARA PRUEBAS SOLO*******************************
     private void crearDatosPrueba() throws Exception {
-        banco.cargarProductosDeArchivo("res/prestamistas.txt");
+        banco.cargarPrestamistasDeArchivo("res/prestamistas.txt");
         //banco.añadirPrestamista("Santander", 12, 25);
         //banco.añadirPrestamista("Bankia", 24, 12);
         //banco.añadirPrestamista("Caixa", 12, 13);
