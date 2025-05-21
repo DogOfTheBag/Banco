@@ -24,7 +24,7 @@ public class VPal extends javax.swing.JFrame {
         pListados = new PListados(this,this.banco);
         
         initComponents();
-        this.setSize(800,600);
+        this.setSize(1300,900);
         this.setLocationRelativeTo(null);
         this.setContentPane(ppal);
         /*para evitarme lios con los guardados he decidido cambiar la operación de cierre

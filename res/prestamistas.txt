@@ -1,4 +1,5 @@
 Santander;14;5.0
-Sabadell;48;100.0
 Caixa;6;18.0
+Cofidis;40;33.0
+Sabadell;48;100.0
 Bankia;11;8.0

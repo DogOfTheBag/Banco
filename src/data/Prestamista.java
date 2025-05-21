@@ -72,7 +72,7 @@ public class Prestamista {
 
     @Override
     public String toString() {
-        return "Prestamista: "  + nombre + " | numPlazos: " + numPlazos + " | porcentajeInteres: " + porcentajeInteres;
+        return nombre + " | Numero de plazos: " + numPlazos + " | Porcentaje de interes: " + porcentajeInteres;
     }
 
 }

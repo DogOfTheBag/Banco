@@ -1,10 +1,13 @@
 package GUI;
 
 import data.Banco;
-import data.Prestamista
+import data.Prestamista;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,11 +18,11 @@ public class PListados extends javax.swing.JPanel {
     /**
      * Creates new form PListados
      */
-    Banco tienda;
+    Banco banco;
     VPal v;
-    public PListados(VPal v, Banco tienda) {
+    public PListados(VPal v, Banco banco) {
         this.v = v;
-        this.tienda = tienda;
+        this.banco = banco;
         initComponents();
     }
 
@@ -39,10 +42,8 @@ public class PListados extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         botonListadoNormal = new javax.swing.JButton();
         botonListadoConsolas = new javax.swing.JButton();
-        botonListadoJuegos = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -59,18 +60,19 @@ public class PListados extends javax.swing.JPanel {
         setLayout(new java.awt.GridLayout(2, 1));
 
         areaListado.setColumns(20);
+        areaListado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         areaListado.setRows(5);
         jScrollPane1.setViewportView(areaListado);
 
         add(jScrollPane1);
 
-        panelInferior.setLayout(new java.awt.GridLayout(2, 4));
+        panelInferior.setLayout(new java.awt.GridLayout(2, 3));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
+            .addGap(0, 164, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +85,7 @@ public class PListados extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
+            .addGap(0, 164, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +98,7 @@ public class PListados extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
+            .addGap(0, 164, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,20 +107,7 @@ public class PListados extends javax.swing.JPanel {
 
         panelInferior.add(jPanel5);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 75, Short.MAX_VALUE)
-        );
-
-        panelInferior.add(jPanel6);
-
-        botonListadoNormal.setText("Listado Total");
+        botonListadoNormal.setText("Listado de prestamistas");
         botonListadoNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonListadoNormalActionPerformed(evt);
@@ -126,21 +115,13 @@ public class PListados extends javax.swing.JPanel {
         });
         panelInferior.add(botonListadoNormal);
 
-        botonListadoConsolas.setText("Listado Consolas");
+        botonListadoConsolas.setText("Simulador de prestamo");
         botonListadoConsolas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonListadoConsolasActionPerformed(evt);
             }
         });
         panelInferior.add(botonListadoConsolas);
-
-        botonListadoJuegos.setText("Listado Juegos");
-        botonListadoJuegos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonListadoJuegosActionPerformed(evt);
-            }
-        });
-        panelInferior.add(botonListadoJuegos);
 
         botonVolver.setText("Volver");
         botonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -161,27 +142,34 @@ public class PListados extends javax.swing.JPanel {
     }//GEN-LAST:event_botonVolverActionPerformed
     //listado normal de todos los productos
     private void botonListadoNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListadoNormalActionPerformed
-        this.areaListado.setText(tienda.toString());
+        this.areaListado.setText(banco.toString());
     }//GEN-LAST:event_botonListadoNormalActionPerformed
 
     private void botonListadoConsolasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListadoConsolasActionPerformed
-        this.areaListado.setText(generarListadoFiltrado(Consola.class, "Consolas de la tienda ordenadas por precio: \n"));
+        try {
+            this.areaListado.setText(listarPrestamistasConDinero("Estos son los prestamos que te podemos ofrecer \n"));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            Logger.getLogger(PListados.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonListadoConsolasActionPerformed
-
-    private void botonListadoJuegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListadoJuegosActionPerformed
-        this.areaListado.setText(generarListadoFiltrado(Videojuego.class,"Videojuegos de la tienda ordenados por precio \n"));
-    }//GEN-LAST:event_botonListadoJuegosActionPerformed
-    /*he hecho esta función general para que no me pase como lo de dar altas, dependiendo del tipo de clase que te pase te hace una lista
-    de cada tipo de producto, con un titulo que le hayas pasado tu. Además, lo ordena de menor a mayor precio. He decidido hacer esto
-    para hacer un listado con lógica dentro de una tienda, aunque podría ampliarse*/
-    private String generarListadoFiltrado(Class<?> tipo, String titulo){
-        List<Prestamista> productosOrdenados = new ArrayList<>(v.banco.getPrestamistas());
-        productosOrdenados.sort(Comparator.comparingDouble(Prestamista::getPorcentajeInteres));
-       
+    
+    private String listarPrestamistasConDinero(String titulo) throws Exception{
+        String stringDinero = JOptionPane.showInputDialog(null, "Introduce la cantidad de dinero que deseas pedir");
+        if(stringDinero == null)
+            throw new Exception("Necesitamos una cantidad de dinero para simular el prestamo");
+        int dinero = Integer.parseInt(stringDinero);
+        if(dinero < 1000 || dinero > 300000){
+            throw new Exception("No se pueden pedir creditos de menos de 1000 euros o de mas de 300000 euros");
+        }
         StringBuilder resultado = new StringBuilder(titulo);
-        for (Prestamista p : productosOrdenados) {
-            if(tipo.isInstance(p))
-            resultado.append(p.toString()).append("\n");
+        for (Prestamista p : banco.getPrestamistas()) {
+            double pagoConInteres = dinero * (1 +(p.getPorcentajeInteres() / 100));
+            double pagoPlazo = pagoConInteres / p.getNumPlazos();
+            resultado.append(p.toString())
+                .append(String.format(" | Total a pagar del préstamo con intereses: %.2f", pagoConInteres))
+                .append(String.format("€ | Dinero a pagar en un plazo: %.2f", pagoPlazo))
+                .append(" €\n");
         }
         return resultado.toString();
     }
@@ -189,14 +177,12 @@ public class PListados extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaListado;
     private javax.swing.JButton botonListadoConsolas;
-    private javax.swing.JButton botonListadoJuegos;
     private javax.swing.JButton botonListadoNormal;
     private javax.swing.JButton botonVolver;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelInferior;
     // End of variables declaration//GEN-END:variables
