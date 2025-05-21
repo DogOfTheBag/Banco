@@ -1,7 +1,7 @@
-Sabadell;60;19.87
-Bankia;11;8.0
-Santander;14;5.0
-Caixa;6;18.0
-N26;18;9.45
 Cofidis;24;17.6
+Sabadell;60;19.87
+Santander;14;5.0
 Revolut;12;9.45
+Caixa;6;18.0
+Bankia;11;8.0
+N26;18;9.45

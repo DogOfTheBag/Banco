@@ -42,6 +42,8 @@ public class App extends Thread {
                 banco.cargarPrestamistasDeArchivo("res/prestamistas.txt");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         VPal v = new VPal(NOM, banco);
