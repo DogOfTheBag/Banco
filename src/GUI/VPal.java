@@ -18,7 +18,7 @@ public class VPal extends javax.swing.JFrame {
         this.banco = tienda;
         this.NOM=nom;
         this.setTitle(NOM);
-        //le paso la ventana y la tienda a los paneles para que pueda usarlo facilmente
+        //le paso la ventana y el banco a los paneles para que pueda usarlo facilmente
         ppal = new PPal(this.banco,this);
         pABM = new PAltasBajasModificaciones(this,this.banco);
         pListados = new PListados(this,this.banco);

@@ -21,7 +21,7 @@ public class App extends Thread {
     final boolean DEV_VERSION = false;
     final String NOM = "Banco Damtander";
     Banco banco;
-
+    //No voy a explicar esto mucho porque es igual que la tienda
     //dev version para probar cosas, o abrir la ventana si es la versión final
     @Override
     public void run(){

@@ -83,7 +83,7 @@ public class PPal extends javax.swing.JPanel {
         v.revalidate();
 
     }//GEN-LAST:event_botonReglasActionPerformed
-
+    //con el boton salir guardamos los datos
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         //he puesto unos mensajes por consola, que he tenido problemas al guardar en el archivo, y esto me dice que se ha guardado.
         System.out.println("Guardando datos desde instancia: " + banco);

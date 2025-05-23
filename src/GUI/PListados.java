@@ -133,7 +133,7 @@ public class PListados extends javax.swing.JPanel {
 
         add(panelInferior);
     }// </editor-fold>//GEN-END:initComponents
-
+    //reestablecemos el area de texto a vacio para que quede mejor
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         this.areaListado.setText("");
         v.setContentPane(v.ppal);
@@ -155,7 +155,8 @@ public class PListados extends javax.swing.JPanel {
             Logger.getLogger(PListados.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonSimulacionPrestamoActionPerformed
-    
+    //esta funcion quizá deberia haber ido mejor en banco en vez de aquí
+    //con un JOptionPane que te de el dinero, hacemos las validaciones y las cuentas, lo metemos a una cadena y la sacamos
     private String listarPrestamistasConDinero(String titulo) throws Exception{
         String stringDinero = JOptionPane.showInputDialog(null, "Introduce la cantidad de dinero que deseas pedir");
         if(stringDinero == null)

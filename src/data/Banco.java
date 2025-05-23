@@ -15,7 +15,7 @@ import java.util.Set;
  *
  * @author alber
  */
-//crearemos un set de producto donde guardaremos cualquier tipo de producto que hagamos
+//crearemos un set de producto donde guardaremos cualquier tipo de prestamista que hagamos
 public class Banco {
     private final Set <Prestamista> prestamistas;
 
@@ -34,7 +34,7 @@ public class Banco {
         }
         return false;
     }
-    
+    //todo sigue los mismos principios que el CRUD de la tienda
     public boolean modificarPlazosPorcentajesPrestamista(String nombre, double porcentajeInteres, int numPlazos) throws Exception{
         for (Prestamista prestamista : prestamistas) {
             if(prestamista.getNombre().equalsIgnoreCase(nombre)){
@@ -60,8 +60,7 @@ public class Banco {
         return prestamistas;
     }
     /*Las siguientes funciones se encargan de cargar y guardar respectivamente
-    la información de los listados en archivos.txt, de forma que tenemos persistencia de informacion al cerrar la app
-    a la vez que mantenemos una distincion entre cada tipo de producto*/
+    la información de los listados en archivos.txt, de forma que tenemos persistencia de informacion al cerrar la app*/
     public void cargarPrestamistasDeArchivo(String ruta) throws FileNotFoundException, Exception{
         File archivo = new File(ruta);
         if(!archivo.exists()) return;

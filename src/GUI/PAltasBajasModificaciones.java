@@ -104,9 +104,7 @@ public class PAltasBajasModificaciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAltaActionPerformed
-        //(Component parentComponent,Object message, String title, int optionType, int messageType, Icon icon, Object[] options, Object initialValue)
-        //basicamente he hecho la misma funcion 2 veces, una para consolas y para juegos. En el futuro me convendria unificarlas en caso de añadir mas tipos de producto
-        
+    //lo mismo que en la tienda pero he quitado la opcion previa para elegir entre tipos de productos, o sea que mas sencillo
         try{
                 String nombre = JOptionPane.showInputDialog("Introduce el nombre del prestamista");
                 if (nombre == null || nombre.trim().isEmpty()) return; //si algun valor es null es que le ha dado a cancelar y se corta la alta
@@ -131,7 +129,7 @@ public class PAltasBajasModificaciones extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Error: " + ex.getMessage());
             Logger.getLogger(PAltasBajasModificaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //de nuevo, para comprobar que ha cambiado la cantidad de productos
+        //de nuevo, para comprobar que ha cambiado la cantidad de prestamistas
         System.out.println("Prestamistas después de alta: " + banco.getPrestamistas().size());
 
     }//GEN-LAST:event_botonAltaActionPerformed
@@ -158,8 +156,9 @@ public class PAltasBajasModificaciones extends javax.swing.JPanel {
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if(banco.getPrestamistas().isEmpty())
-            JOptionPane.showMessageDialog(null, "No se puede modificar nada, no hay productos en la tienda");
+            JOptionPane.showMessageDialog(null, "No se puede modificar nada, no hay prestamistas en el banco");
         else{
+            //tomamos valores y se intentan modificar en el nombre que hayamos puesto.
             try{
             String nombre = JOptionPane.showInputDialog(banco.toString() + "\nIntroduce el nombre del prestamista a modificar"); 
             if (nombre == null) return;

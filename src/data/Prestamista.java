@@ -8,7 +8,9 @@ public class Prestamista {
     private String nombre;
     private int numPlazos;
     private double porcentajeInteres;
-
+    /*He hecho el constructor usando setters que he modificado para que tenga una super validación y que tengan
+    que hacer el prestamista con datos correctos si o si con buenos datos, aunque entre los métodos de validar y esto
+    creo que me he acabado pasando (aquí y en la tienda)*/
     public Prestamista(String nombre, int numPlazos, double porcentajeInteres) throws Exception {
         this.setNombre(nombre);
         this.setNumPlazos(numPlazos);
@@ -18,7 +20,7 @@ public class Prestamista {
     public String getNombre() {
         return nombre;
     }
-
+    //setters y metodos para validar info
     public void setNombre(String nombre) throws Exception {
         if(nombre != null || nombre.trim().isEmpty())
             this.nombre = nombre;
